@@ -1,20 +1,39 @@
-#N canvas 303 120 829 652 10;
-#X obj 17 13 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#N canvas 391 94 829 652 10;
+#X obj 17 13 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X msg 17 35 \; pd dsp \$1;
-#X msg 173 58 open cosmic.wav;
-#X obj 173 155 readsf~ 2;
-#X obj 173 228 dac~ 1 2;
-#X obj 236 187 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 173 235 readsf~ 2;
+#X obj 173 308 dac~ 1 2;
+#X obj 236 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 118 95 start;
-#X msg 91 120 stop;
-#X obj 173 27 loadbang;
+#X msg 118 175 start;
+#X msg 91 200 stop;
+#X obj 173 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 173 93 openpanel;
+#X msg 173 138 open \$1;
+#X obj 325 33 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 325 55 openpanel;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array channelR 36000 float 2;
+#X coords 0 1 36000 -1 200 140 1;
+#X restore 621 202 graph;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array channelL 36000 float 2;
+#X coords 0 1 36000 -1 200 140 1;
+#X restore 621 40 graph;
+#X msg 325 87 read -resize \$1 channelL channelR;
+#X obj 325 119 soundfiler;
 #X connect 0 0 1 0;
 #X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 3 1 4 1;
-#X connect 3 2 5 0;
-#X connect 6 0 3 0;
-#X connect 7 0 3 0;
-#X connect 8 0 2 0;
+#X connect 2 1 3 1;
+#X connect 2 2 4 0;
+#X connect 5 0 2 0;
+#X connect 6 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 14 0;
+#X connect 14 0 15 0;
